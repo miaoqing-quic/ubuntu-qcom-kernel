@@ -223,6 +223,7 @@ void iris_vpu_power_off_hw(struct iris_core *core)
 {
 	iris_genpd_set_hwmode(core, IRIS_VCODEC_POWER_DOMAIN, false);
 	iris_disable_power_domains(core, IRIS_VCODEC_POWER_DOMAIN);
+	iris_disable_unprepare_clock(core, IRIS_BSE_HW_CLK);
 	iris_disable_unprepare_clock(core, IRIS_VCODEC_AHB_CLK);
 	iris_disable_unprepare_clock(core, IRIS_VCODEC_CLK);
 }
@@ -291,8 +292,14 @@ int iris_vpu_power_on_hw(struct iris_core *core)
 	if (ret && ret != -ENOENT)
 		goto err_disable_hw_clock;
 
+	ret = iris_prepare_enable_clock(core, IRIS_BSE_HW_CLK);
+	if (ret && ret != -ENOENT)
+		goto err_disable_hw_ahb_clock;
+
 	return 0;
 
+err_disable_hw_ahb_clock:
+	iris_disable_unprepare_clock(core, IRIS_VCODEC_AHB_CLK);
 err_disable_hw_clock:
 	iris_disable_unprepare_clock(core, IRIS_VCODEC_CLK);
 err_disable_power:
