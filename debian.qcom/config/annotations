@@ -42,6 +42,12 @@ CONFIG_HZ_1000                                  note<'TODO: update note'>
 CONFIG_HZ_250                                   policy<{'arm64': 'n', 'arm64-qcom-rt': 'y'}>
 CONFIG_HZ_250                                   note<'TODO: update note'>
 
+CONFIG_INTERCONNECT_QCOM_SHIKRA                 policy<{'arm64': 'y'}>
+CONFIG_INTERCONNECT_QCOM_SHIKRA                 note<'built in: required at boot to bring up storage on Shikra'>
+
+CONFIG_INTERCONNECT_QCOM_SMD_RPM                policy<{'arm64': 'y'}>
+CONFIG_INTERCONNECT_QCOM_SMD_RPM                note<'selected by INTERCONNECT_QCOM_SHIKRA=y'>
+
 CONFIG_IPMMU_VMSA                               policy<{'arm64': '-'}>
 CONFIG_IPMMU_VMSA                               note<'LP: #1718734'>
 
@@ -414,9 +420,9 @@ CONFIG_CLK_RV1126B                              policy<{'arm64': '-'}>
 CONFIG_CLK_RZG2L                                policy<{'arm64': '-'}>
 CONFIG_CLK_RZV2H                                policy<{'arm64': '-'}>
 CONFIG_CLK_SHIKRA_AUDIOCORECC                   policy<{'arm64': 'm'}>
-CONFIG_CLK_SHIKRA_DISPCC                        policy<{'arm64': 'm'}>
+CONFIG_CLK_SHIKRA_DISPCC                        policy<{'arm64': '-'}>
 CONFIG_CLK_SHIKRA_GCC                           policy<{'arm64': 'y'}>
-CONFIG_CLK_SHIKRA_GPUCC                         policy<{'arm64': 'm'}>
+CONFIG_CLK_SHIKRA_GPUCC                         policy<{'arm64': '-'}>
 CONFIG_CLK_SOPHGO_CV1800                        policy<{'arm64': '-'}>
 CONFIG_CLK_SOPHGO_SG2042_CLKGEN                 policy<{'arm64': '-'}>
 CONFIG_CLK_SOPHGO_SG2042_PLL                    policy<{'arm64': '-'}>
@@ -1106,7 +1112,6 @@ CONFIG_INTERCONNECT_QCOM_KAANAPALI              policy<{'arm64': 'y'}>
 CONFIG_INTERCONNECT_QCOM_QCS615                 policy<{'arm64': 'y'}>
 CONFIG_INTERCONNECT_QCOM_QCS8300                policy<{'arm64': 'y'}>
 CONFIG_INTERCONNECT_QCOM_SDM845                 policy<{'arm64': 'y'}>
-CONFIG_INTERCONNECT_QCOM_SHIKRA                 policy<{'arm64': 'y'}>
 CONFIG_INTERCONNECT_QCOM_SM8450                 policy<{'arm64': 'y'}>
 CONFIG_INTERCONNECT_QCOM_SM8550                 policy<{'arm64': 'y'}>
 CONFIG_INTERCONNECT_QCOM_SM8650                 policy<{'arm64': 'y'}>
