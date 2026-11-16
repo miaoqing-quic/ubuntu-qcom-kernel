@@ -36,5 +36,5 @@ jobs:
       ref: refs/pull/${{ github.event.pull_request.number }}/merge
       skip_s3: false
       dbgsym: false
-      flavours: qcom
+      flavours: ALL
       s3_prefix: premerge
